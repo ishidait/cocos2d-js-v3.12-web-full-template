@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hello Cocos2d-JS</title> 
-    <script type="text/javascript" src="cocos2d-js-v3.12.js" charset="UTF-8"></script>
+    <title>Hello Cocos2d-JS</title>
+    <script type="text/javascript" src="lib/cocos2d-js-v3.12.js" charset="UTF-8"></script>
 </head>
-<body>   
+<body>
     <canvas id="gameCanvas" width="800" height="450"></canvas>
     <script type="text/javascript">
           window.onload = function(){
@@ -17,12 +17,20 @@
                               var size = cc.director.getWinSize();
                               var sprite = cc.Sprite.create("HelloWorld.png");
                               sprite.setPosition(size.width / 2, size.height / 2);
-                              sprite.setScale(0.8);
+                              sprite.setScale(1.4);
                               this.addChild(sprite, 0);
 
-                              var label = cc.LabelTTF.create("Hello World", "Arial", 40);
+                              sprite.runAction(
+                                  cc.rotateBy(30, 360).repeatForever()
+                              );
+
+                              var label = cc.LabelTTF.create("Hello Cocos2d-JS!", "Arial", 40);
                               label.setPosition(size.width / 2, size.height / 2);
                               this.addChild(label, 1);
+
+                              label.runAction(
+                                  cc.rotateBy(2, 360).repeatForever()
+                              );
                           }
                       });
                       cc.director.runScene(new MyScene());
